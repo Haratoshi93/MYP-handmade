@@ -63,14 +63,39 @@ st.markdown("""
         font-size: 11px;
         margin: 0;
     }
-    .menu-image {
+    
+    /* 左右に流れるギャラリー（ラブホテルのパネル風） */
+    .scroll-container {
         width: 100%;
-        height: auto;
-        border-radius: 4px;
+        overflow: hidden;
+        position: relative;
         margin-top: 12px;
-        border: 1px solid #333;
-        object-fit: cover;
     }
+    .scroll-content {
+        display: flex;
+        width: max-content;
+        /* 20秒かけて左へスクロールし、無限ループ */
+        animation: scroll-left 20s linear infinite;
+    }
+    /* ホバーでスクロールを一時停止させる（見たい画像で止められる） */
+    .scroll-content:hover {
+        animation-play-state: paused;
+    }
+    .scroll-content img {
+        height: 120px; /* パネルの高さを揃える */
+        width: 120px;  /* 正方形に */
+        object-fit: cover;
+        margin-right: 10px;
+        border-radius: 6px;
+        border: 2px solid #333;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+    @keyframes scroll-left {
+        0% { transform: translateX(0); }
+        /* 同じ画像セットを2回並べているので、半分(50%)進んだら最初に戻すことでループが繋がる */
+        100% { transform: translateX(-50%); }
+    }
+    
     .vip-box {
         margin-top: 28px;
         background-color: rgba(212, 175, 55, 0.05);
@@ -93,43 +118,84 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ダミー画像を追加したHTMLコンテンツ
 html_content = """
 <div class="price-card">
 <div class="price-title">PRICE LIST</div>
 <div class="price-subtitle">BESPOKE RHINESTONE DECORATION</div>
+
 <div class="menu-item">
 <div class="menu-header">
 <div class="menu-name">アイコスケース デコ</div>
 <div class="menu-price">¥14,900<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
-<img src="https://via.placeholder.com/400x200/111111/d4af37?text=Sample+Image" class="menu-image" alt="Sample 1">
+<div class="scroll-container">
+    <div class="scroll-content">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+A">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+B">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+C">
+        <!-- 無限ループ用にもう一度同じ画像を配置 -->
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+A">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+B">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+C">
+    </div>
 </div>
+</div>
+
 <div class="menu-item">
 <div class="menu-header">
 <div class="menu-name">たばこケース デコ (大)</div>
 <div class="menu-price">¥17,300<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
-<img src="https://via.placeholder.com/400x200/111111/d4af37?text=Sample+Image" class="menu-image" alt="Sample 2">
+<div class="scroll-container">
+    <div class="scroll-content" style="animation-duration: 25s;"> <!-- 少し速度を変える工夫 -->
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+1">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+2">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+3">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+1">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+2">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+3">
+    </div>
 </div>
+</div>
+
 <div class="menu-item">
 <div class="menu-header">
 <div class="menu-name">たばこケース デコ (小)</div>
 <div class="menu-price">¥15,000<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
-<img src="https://via.placeholder.com/400x200/111111/d4af37?text=Sample+Image" class="menu-image" alt="Sample 3">
+<div class="scroll-container">
+    <div class="scroll-content" style="animation-duration: 18s;">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+1">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+2">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+3">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+1">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+2">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+3">
+    </div>
 </div>
+</div>
+
 <div class="menu-item">
 <div class="menu-header">
 <div class="menu-name">アイコス本体 デコ</div>
 <div class="menu-price">¥14,200<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">※お客様のお持ち込み本体への施工</p>
-<img src="https://via.placeholder.com/400x200/111111/d4af37?text=Sample+Image" class="menu-image" alt="Sample 4">
+<div class="scroll-container">
+    <div class="scroll-content">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+1">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+2">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+3">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+1">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+2">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+3">
+    </div>
 </div>
+</div>
+
 <div class="vip-box">
 <div class="vip-title">VIP SERVICE</div>
 <div class="vip-text">
@@ -138,6 +204,7 @@ html_content = """
 「1回無料お直し保証」をお付けしております。
 </div>
 </div>
+
 <p style="color: #666; font-size: 9px; text-align: center; margin-top: 24px;">
 ※デザインの細かさにより価格が変動する場合がございます。
 </p>
