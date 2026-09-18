@@ -2,8 +2,9 @@ import streamlit as st
 
 st.set_page_config(page_title="PRICE LIST - デコレーション料金表", page_icon="💎", layout="centered")
 
-# カスタムCSSの読み込み
+# Swiper.jsの読み込みとカスタムCSS
 st.markdown("""
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <style>
     .stApp {
         background-color: #1a1a1a;
@@ -64,37 +65,27 @@ st.markdown("""
         margin: 0;
     }
     
-    /* 指でスワイプできるギャラリー（Scroll Snap） */
-    .scroll-container {
+    /* Swiper (スライダー) の設定 */
+    .swiper-container {
         width: 100%;
-        overflow-x: auto; /* 横スクロールを許可 */
-        overflow-y: hidden;
-        white-space: nowrap; /* 画像を横一列に並べる */
         margin-top: 12px;
-        padding-bottom: 8px; /* スクロールしやすくするための余白 */
-        -webkit-overflow-scrolling: touch; /* スマホで滑らかにスクロールさせる */
-        scroll-snap-type: x mandatory; /* 画像ごとにピタッと止まる設定 */
+        overflow: hidden;
+        position: relative;
     }
-    
-    /* スクロールバー（下の棒）を隠してデザインを綺麗に保つ */
-    .scroll-container::-webkit-scrollbar {
-        display: none;
+    /* ゆっくり流れる動きをなめらかにする（リニア） */
+    .swiper-wrapper {
+        transition-timing-function: linear !important;
     }
-    .scroll-container {
-        -ms-overflow-style: none;  /* IE and Edge */
-        scrollbar-width: none;  /* Firefox */
+    .swiper-slide {
+        width: 120px !important; /* スマホでちょうどいいサイズ */
     }
-
-    .scroll-content img {
-        height: 120px; 
-        width: 120px;  
+    .swiper-slide img {
+        width: 120px;
+        height: 120px;
         object-fit: cover;
-        display: inline-block;
-        margin-right: 8px;
         border-radius: 6px;
         border: 2px solid #333;
         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-        scroll-snap-align: start; /* ここでピタッと止まる */
     }
     
     .vip-box {
@@ -119,6 +110,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
+# HTMLにSwiperの構造を組み込む
 html_content = """
 <div class="price-card">
 <div class="price-title">PRICE LIST</div>
@@ -130,13 +122,12 @@ html_content = """
 <div class="menu-price">¥14,900<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
-<div class="scroll-container">
-    <div class="scroll-content">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+A">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+B">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+C">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+D">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+E">
+<div class="swiper-container mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+A"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+B"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+C"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+D"></div>
     </div>
 </div>
 </div>
@@ -147,12 +138,12 @@ html_content = """
 <div class="menu-price">¥17,300<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
-<div class="scroll-container">
-    <div class="scroll-content">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+1">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+2">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+3">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+4">
+<div class="swiper-container mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+1"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+2"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+3"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+4"></div>
     </div>
 </div>
 </div>
@@ -163,12 +154,12 @@ html_content = """
 <div class="menu-price">¥15,000<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
-<div class="scroll-container">
-    <div class="scroll-content">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+1">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+2">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+3">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+4">
+<div class="swiper-container mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+1"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+2"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+3"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+4"></div>
     </div>
 </div>
 </div>
@@ -179,12 +170,12 @@ html_content = """
 <div class="menu-price">¥14,200<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">※お客様のお持ち込み本体への施工</p>
-<div class="scroll-container">
-    <div class="scroll-content">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+1">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+2">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+3">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+4">
+<div class="swiper-container mySwiper">
+    <div class="swiper-wrapper">
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+1"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+2"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+3"></div>
+        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+4"></div>
     </div>
 </div>
 </div>
@@ -202,6 +193,39 @@ html_content = """
 ※デザインの細かさにより価格が変動する場合がございます。
 </p>
 </div>
+
+<!-- Swiper.jsのスクリプトと設定 -->
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script>
+    // Streamlit環境内で確実に実行するための関数
+    function initSwiper() {
+        if (typeof Swiper !== 'undefined') {
+            const swipers = document.querySelectorAll('.mySwiper');
+            swipers.forEach((el) => {
+                new Swiper(el, {
+                    slidesPerView: 'auto',
+                    spaceBetween: 10,
+                    loop: true,
+                    speed: 3000, // ゆっくり移動する時間（3秒）
+                    autoplay: {
+                        delay: 0, // 止まっている時間を0にする（常に動き続ける）
+                        disableOnInteraction: false, // 触った後も自動再生を続ける
+                    },
+                    freeMode: true, // スワイプした時に自由にスクロールできる
+                });
+            });
+        } else {
+            // スクリプトの読み込みが間に合っていない場合は少し待って再実行
+            setTimeout(initSwiper, 100);
+        }
+    }
+    
+    // 実行
+    setTimeout(initSwiper, 200);
+</script>
 """
 
-st.markdown(html_content, unsafe_allow_html=True)
+# HTMLを埋め込む。Swiper.jsを動かすために components.v1 を使うのが一番安全。
+# html_content全体を iframe に流し込む。
+import streamlit.components.v1 as components
+components.html(html_content, height=1400)
