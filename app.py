@@ -1,16 +1,14 @@
 import streamlit as st
+import textwrap
 
 st.set_page_config(page_title="PRICE LIST - デコレーション料金表", page_icon="💎", layout="centered")
 
 # カスタムCSSの読み込み
 st.markdown("""
 <style>
-    /* 全体の背景を黒っぽく */
     .stApp {
         background-color: #1a1a1a;
     }
-    
-    /* 料金表のカードデザイン */
     .price-card {
         background: linear-gradient(145deg, #111111, #1e1e1e);
         border: 2px solid #b8860b;
@@ -85,56 +83,50 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 料金表のHTMLコンテンツ
+# インデント（行頭の空白）をすべて取り除いて、コードブロックとして誤認されるのを防ぐ
 html_content = """
 <div class="price-card">
-    <div class="price-title">PRICE LIST</div>
-    <div class="price-subtitle">BESPOKE RHINESTONE DECORATION</div>
-    
-    <div class="menu-item">
-        <div class="menu-header">
-            <h2 class="menu-name">アイコスケース デコ</h2>
-            <div class="menu-price">¥14,900<span style="font-size:12px; color:#888;">〜</span></div>
-        </div>
-        <p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
-    </div>
-
-    <div class="menu-item">
-        <div class="menu-header">
-            <h2 class="menu-name">たばこケース デコ (大)</h2>
-            <div class="menu-price">¥17,300<span style="font-size:12px; color:#888;">〜</span></div>
-        </div>
-        <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
-    </div>
-
-    <div class="menu-item">
-        <div class="menu-header">
-            <h2 class="menu-name">たばこケース デコ (小)</h2>
-            <div class="menu-price">¥15,000<span style="font-size:12px; color:#888;">〜</span></div>
-        </div>
-        <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
-    </div>
-
-    <div class="menu-item">
-        <div class="menu-header">
-            <h2 class="menu-name">アイコス本体 デコ</h2>
-            <div class="menu-price">¥14,200<span style="font-size:12px; color:#888;">〜</span></div>
-        </div>
-        <p class="menu-desc">※お客様のお持ち込み本体への施工</p>
-    </div>
-
-    <div class="vip-box">
-        <div class="vip-title">VIP SERVICE</div>
-        <div class="vip-text">
-            高級ジュエリーボックスにてお渡しいたします。<br>
-            万が一ストーンが取れてしまった場合の<br>
-            「1回無料お直し保証」をお付けしております。
-        </div>
-    </div>
-    
-    <p style="color: #666; font-size: 10px; text-align: center; margin-top: 24px;">
-        ※デザインの細かさにより価格が変動する場合がございます。
-    </p>
+<div class="price-title">PRICE LIST</div>
+<div class="price-subtitle">BESPOKE RHINESTONE DECORATION</div>
+<div class="menu-item">
+<div class="menu-header">
+<h2 class="menu-name">アイコスケース デコ</h2>
+<div class="menu-price">¥14,900<span style="font-size:12px; color:#888;">〜</span></div>
+</div>
+<p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
+</div>
+<div class="menu-item">
+<div class="menu-header">
+<h2 class="menu-name">たばこケース デコ (大)</h2>
+<div class="menu-price">¥17,300<span style="font-size:12px; color:#888;">〜</span></div>
+</div>
+<p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
+</div>
+<div class="menu-item">
+<div class="menu-header">
+<h2 class="menu-name">たばこケース デコ (小)</h2>
+<div class="menu-price">¥15,000<span style="font-size:12px; color:#888;">〜</span></div>
+</div>
+<p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
+</div>
+<div class="menu-item">
+<div class="menu-header">
+<h2 class="menu-name">アイコス本体 デコ</h2>
+<div class="menu-price">¥14,200<span style="font-size:12px; color:#888;">〜</span></div>
+</div>
+<p class="menu-desc">※お客様のお持ち込み本体への施工</p>
+</div>
+<div class="vip-box">
+<div class="vip-title">VIP SERVICE</div>
+<div class="vip-text">
+高級ジュエリーボックスにてお渡しいたします。<br>
+万が一ストーンが取れてしまった場合の<br>
+「1回無料お直し保証」をお付けしております。
+</div>
+</div>
+<p style="color: #666; font-size: 10px; text-align: center; margin-top: 24px;">
+※デザインの細かさにより価格が変動する場合がございます。
+</p>
 </div>
 """
 
