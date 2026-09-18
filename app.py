@@ -2,9 +2,11 @@ import streamlit as st
 
 st.set_page_config(page_title="PRICE LIST - デコレーション料金表", page_icon="💎", layout="centered")
 
-# Swiper.jsの読み込みとカスタムCSS
-st.markdown("""
+# すべてのスタイルとHTMLを一つのテキストにまとめる
+html_content = """
+<!-- Swiper.jsのスタイルシート -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
 <style>
     .stApp {
         background-color: #1a1a1a;
@@ -65,19 +67,18 @@ st.markdown("""
         margin: 0;
     }
     
-    /* Swiper (スライダー) の設定 */
+    /* Swiperの設定 */
     .swiper-container {
         width: 100%;
         margin-top: 12px;
         overflow: hidden;
         position: relative;
     }
-    /* ゆっくり流れる動きをなめらかにする（リニア） */
     .swiper-wrapper {
         transition-timing-function: linear !important;
     }
     .swiper-slide {
-        width: 120px !important; /* スマホでちょうどいいサイズ */
+        width: 120px !important;
     }
     .swiper-slide img {
         width: 120px;
@@ -108,10 +109,7 @@ st.markdown("""
         line-height: 1.6;
     }
 </style>
-""", unsafe_allow_html=True)
 
-# HTMLにSwiperの構造を組み込む
-html_content = """
 <div class="price-card">
 <div class="price-title">PRICE LIST</div>
 <div class="price-subtitle">BESPOKE RHINESTONE DECORATION</div>
@@ -194,38 +192,28 @@ html_content = """
 </p>
 </div>
 
-<!-- Swiper.jsのスクリプトと設定 -->
+<!-- Swiper.jsの本体と実行スクリプト -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    // Streamlit環境内で確実に実行するための関数
-    function initSwiper() {
-        if (typeof Swiper !== 'undefined') {
-            const swipers = document.querySelectorAll('.mySwiper');
-            swipers.forEach((el) => {
-                new Swiper(el, {
-                    slidesPerView: 'auto',
-                    spaceBetween: 10,
-                    loop: true,
-                    speed: 3000, // ゆっくり移動する時間（3秒）
-                    autoplay: {
-                        delay: 0, // 止まっている時間を0にする（常に動き続ける）
-                        disableOnInteraction: false, // 触った後も自動再生を続ける
-                    },
-                    freeMode: true, // スワイプした時に自由にスクロールできる
-                });
+    // Streamlitのレンダリングタイミングに対応するため、少し遅延させて実行
+    setTimeout(function() {
+        var swipers = document.querySelectorAll('.mySwiper');
+        swipers.forEach(function(el) {
+            new Swiper(el, {
+                slidesPerView: 'auto',
+                spaceBetween: 10,
+                loop: true,
+                speed: 3000,
+                autoplay: {
+                    delay: 0,
+                    disableOnInteraction: false,
+                },
+                freeMode: true,
             });
-        } else {
-            // スクリプトの読み込みが間に合っていない場合は少し待って再実行
-            setTimeout(initSwiper, 100);
-        }
-    }
-    
-    // 実行
-    setTimeout(initSwiper, 200);
+        });
+    }, 1000);
 </script>
 """
 
-# HTMLを埋め込む。Swiper.jsを動かすために components.v1 を使うのが一番安全。
-# html_content全体を iframe に流し込む。
-import streamlit.components.v1 as components
-components.html(html_content, height=1400)
+# st.markdownを使って直接レンダリングさせる（CSSの分離を防ぐため）
+st.markdown(html_content, unsafe_allow_html=True)
