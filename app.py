@@ -1,15 +1,33 @@
 import streamlit as st
+import streamlit.components.v1 as components
 
 st.set_page_config(page_title="PRICE LIST - デコレーション料金表", page_icon="💎", layout="centered")
 
-# すべてのスタイルとHTMLを一つのテキストにまとめる
-html_content = """
-<!-- Swiper.jsのスタイルシート -->
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-
+# Streamlit本体の背景色を黒にする
+st.markdown("""
 <style>
     .stApp {
         background-color: #1a1a1a;
+    }
+</style>
+""", unsafe_allow_html=True)
+
+# 完全に独立したWebページ（HTMLドキュメント）として組み立てる
+html_content = """<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+<style>
+    /* iframeの中の背景も黒に合わせる */
+    body {
+        background-color: #1a1a1a;
+        margin: 0;
+        padding: 20px 10px;
+        display: flex;
+        justify-content: center;
+        font-family: 'Times New Roman', YuMincho, 'Yu Mincho', serif;
     }
     .price-card {
         background: linear-gradient(145deg, #111111, #1e1e1e);
@@ -18,9 +36,9 @@ html_content = """
         box-shadow: 0 10px 30px rgba(0,0,0,0.8);
         padding: 32px 24px;
         color: white;
-        font-family: 'Times New Roman', YuMincho, 'Yu Mincho', serif;
+        width: 100%;
         max-width: 400px;
-        margin: 0 auto;
+        box-sizing: border-box;
     }
     .price-title {
         color: #d4af37;
@@ -50,12 +68,10 @@ html_content = """
         margin-bottom: 4px;
     }
     .menu-name {
-        color: #e0e0e0 !important;
-        font-size: 15px !important;
-        margin: 0 !important;
-        letter-spacing: 0.05em !important;
-        font-weight: normal !important;
-        line-height: 1.2 !important;
+        color: #e0e0e0;
+        font-size: 15px;
+        margin: 0;
+        letter-spacing: 0.05em;
     }
     .menu-price {
         color: #d4af37;
@@ -67,12 +83,11 @@ html_content = """
         margin: 0;
     }
     
-    /* Swiperの設定 */
+    /* Swiper (スライダー) の設定 */
     .swiper-container {
         width: 100%;
         margin-top: 12px;
         overflow: hidden;
-        position: relative;
     }
     .swiper-wrapper {
         transition-timing-function: linear !important;
@@ -109,6 +124,8 @@ html_content = """
         line-height: 1.6;
     }
 </style>
+</head>
+<body>
 
 <div class="price-card">
 <div class="price-title">PRICE LIST</div>
@@ -120,7 +137,7 @@ html_content = """
 <div class="menu-price">¥14,900<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
-<div class="swiper-container mySwiper">
+<div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+A"></div>
         <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+B"></div>
@@ -136,7 +153,7 @@ html_content = """
 <div class="menu-price">¥17,300<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
-<div class="swiper-container mySwiper">
+<div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+1"></div>
         <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+2"></div>
@@ -152,7 +169,7 @@ html_content = """
 <div class="menu-price">¥15,000<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
-<div class="swiper-container mySwiper">
+<div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+1"></div>
         <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+2"></div>
@@ -168,7 +185,7 @@ html_content = """
 <div class="menu-price">¥14,200<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">※お客様のお持ち込み本体への施工</p>
-<div class="swiper-container mySwiper">
+<div class="swiper-container">
     <div class="swiper-wrapper">
         <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+1"></div>
         <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+2"></div>
@@ -192,12 +209,11 @@ html_content = """
 </p>
 </div>
 
-<!-- Swiper.jsの本体と実行スクリプト -->
+<!-- 外部プログラム（Swiper）を確実に動かす -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    // Streamlitのレンダリングタイミングに対応するため、少し遅延させて実行
-    setTimeout(function() {
-        var swipers = document.querySelectorAll('.mySwiper');
+    document.addEventListener("DOMContentLoaded", function() {
+        const swipers = document.querySelectorAll('.swiper-container');
         swipers.forEach(function(el) {
             new Swiper(el, {
                 slidesPerView: 'auto',
@@ -211,9 +227,11 @@ html_content = """
                 freeMode: true,
             });
         });
-    }, 1000);
+    });
 </script>
+</body>
+</html>
 """
 
-# st.markdownを使って直接レンダリングさせる（CSSの分離を防ぐため）
-st.markdown(html_content, unsafe_allow_html=True)
+# components.html を使って、安全な iframe 内で完全なWebページとして表示させる
+components.html(html_content, height=1300, scrolling=False)
