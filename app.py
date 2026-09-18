@@ -1,4 +1,5 @@
 import streamlit as st
+import textwrap
 
 st.set_page_config(page_title="PRICE LIST - デコレーション料金表", page_icon="💎", layout="centered")
 
@@ -16,12 +17,12 @@ st.markdown("""
         padding: 32px 24px;
         color: white;
         font-family: 'Times New Roman', YuMincho, 'Yu Mincho', serif;
-        max-width: 400px; /* 少しスリムに */
+        max-width: 400px;
         margin: 0 auto;
     }
     .price-title {
         color: #d4af37;
-        font-size: 24px; /* 28pxから少し小さく */
+        font-size: 24px;
         text-align: center;
         letter-spacing: 0.15em;
         border-bottom: 1px solid #d4af37;
@@ -47,14 +48,16 @@ st.markdown("""
         margin-bottom: 4px;
     }
     .menu-name {
-        color: #e0e0e0;
-        font-size: 14px; /* 16pxから少し小さくして上品に */
-        margin: 0;
-        letter-spacing: 0.05em;
+        color: #e0e0e0 !important;
+        font-size: 15px !important;
+        margin: 0 !important;
+        letter-spacing: 0.05em !important;
+        font-weight: normal !important;
+        line-height: 1.2 !important;
     }
     .menu-price {
         color: #d4af37;
-        font-size: 18px; /* 20pxから少し小さく */
+        font-size: 18px;
     }
     .menu-desc {
         color: #888;
@@ -83,35 +86,35 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# インデント（行頭の空白）を取り除いたHTMLコンテンツ
+# h2タグをやめてdivタグにすることでStreamlitの強制スタイルを回避する
 html_content = """
 <div class="price-card">
 <div class="price-title">PRICE LIST</div>
 <div class="price-subtitle">BESPOKE RHINESTONE DECORATION</div>
 <div class="menu-item">
 <div class="menu-header">
-<h2 class="menu-name">アイコスケース デコ</h2>
+<div class="menu-name">アイコスケース デコ</div>
 <div class="menu-price">¥14,900<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
 </div>
 <div class="menu-item">
 <div class="menu-header">
-<h2 class="menu-name">たばこケース デコ (大)</h2>
+<div class="menu-name">たばこケース デコ (大)</div>
 <div class="menu-price">¥17,300<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
 </div>
 <div class="menu-item">
 <div class="menu-header">
-<h2 class="menu-name">たばこケース デコ (小)</h2>
+<div class="menu-name">たばこケース デコ (小)</div>
 <div class="menu-price">¥15,000<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
 </div>
 <div class="menu-item">
 <div class="menu-header">
-<h2 class="menu-name">アイコス本体 デコ</h2>
+<div class="menu-name">アイコス本体 デコ</div>
 <div class="menu-price">¥14,200<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">※お客様のお持ち込み本体への施工</p>
