@@ -64,36 +64,37 @@ st.markdown("""
         margin: 0;
     }
     
-    /* 左右に流れるギャラリー（ラブホテルのパネル風） */
+    /* 指でスワイプできるギャラリー（Scroll Snap） */
     .scroll-container {
         width: 100%;
-        overflow: hidden;
-        position: relative;
+        overflow-x: auto; /* 横スクロールを許可 */
+        overflow-y: hidden;
+        white-space: nowrap; /* 画像を横一列に並べる */
         margin-top: 12px;
+        padding-bottom: 8px; /* スクロールしやすくするための余白 */
+        -webkit-overflow-scrolling: touch; /* スマホで滑らかにスクロールさせる */
+        scroll-snap-type: x mandatory; /* 画像ごとにピタッと止まる設定 */
     }
-    .scroll-content {
-        display: flex;
-        width: max-content;
-        /* 20秒かけて左へスクロールし、無限ループ */
-        animation: scroll-left 20s linear infinite;
+    
+    /* スクロールバー（下の棒）を隠してデザインを綺麗に保つ */
+    .scroll-container::-webkit-scrollbar {
+        display: none;
     }
-    /* ホバーでスクロールを一時停止させる（見たい画像で止められる） */
-    .scroll-content:hover {
-        animation-play-state: paused;
+    .scroll-container {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
     }
+
     .scroll-content img {
-        height: 120px; /* パネルの高さを揃える */
-        width: 120px;  /* 正方形に */
+        height: 120px; 
+        width: 120px;  
         object-fit: cover;
-        margin-right: 10px;
+        display: inline-block;
+        margin-right: 8px;
         border-radius: 6px;
         border: 2px solid #333;
         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    @keyframes scroll-left {
-        0% { transform: translateX(0); }
-        /* 同じ画像セットを2回並べているので、半分(50%)進んだら最初に戻すことでループが繋がる */
-        100% { transform: translateX(-50%); }
+        scroll-snap-align: start; /* ここでピタッと止まる */
     }
     
     .vip-box {
@@ -134,10 +135,8 @@ html_content = """
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+A">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+B">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+C">
-        <!-- 無限ループ用にもう一度同じ画像を配置 -->
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+A">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+B">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+C">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+D">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+E">
     </div>
 </div>
 </div>
@@ -149,13 +148,11 @@ html_content = """
 </div>
 <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
 <div class="scroll-container">
-    <div class="scroll-content" style="animation-duration: 25s;"> <!-- 少し速度を変える工夫 -->
+    <div class="scroll-content">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+1">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+2">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+3">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+1">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+2">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+3">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+4">
     </div>
 </div>
 </div>
@@ -167,13 +164,11 @@ html_content = """
 </div>
 <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
 <div class="scroll-container">
-    <div class="scroll-content" style="animation-duration: 18s;">
+    <div class="scroll-content">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+1">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+2">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+3">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+1">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+2">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+3">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+4">
     </div>
 </div>
 </div>
@@ -189,9 +184,7 @@ html_content = """
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+1">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+2">
         <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+3">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+1">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+2">
-        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+3">
+        <img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+4">
     </div>
 </div>
 </div>
