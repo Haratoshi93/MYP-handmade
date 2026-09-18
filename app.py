@@ -1,9 +1,9 @@
+import os
 import streamlit as st
 import streamlit.components.v1 as components
 
 st.set_page_config(page_title="PRICE LIST - デコレーション料金表", page_icon="💎", layout="centered")
 
-# Streamlit本体の背景色を黒にする
 st.markdown("""
 <style>
     .stApp {
@@ -12,24 +12,60 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# 完全に独立したWebページ（HTMLドキュメント）として組み立てる
-html_content = """<!DOCTYPE html>
+# GitHubのRawデータURLのベース（ここから画像を読み込む）
+base_raw_url = "https://raw.githubusercontent.com/Haratoshi93/MYP-handmade/main/images"
+
+def get_image_tags(folder_name):
+    """
+    指定されたフォルダ内の画像を読み込み、Swiper用のHTMLタグを生成する。
+    画像がない場合はプレースホルダー（ダミー画像）を返す。
+    """
+    # 実行環境（ローカルまたはStreamlit Cloud）でのフォルダパス
+    folder_path = os.path.join(os.path.dirname(__file__), "images", folder_name)
+    
+    # プレースホルダーのデフォルト
+    placeholder = f'<div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=No+Image"></div>'
+    
+    if not os.path.exists(folder_path):
+        return placeholder * 4
+        
+    valid_exts = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
+    # フォルダ内の画像ファイルを取得
+    files = [f for f in os.listdir(folder_path) if os.path.splitext(f)[1].lower() in valid_exts]
+    
+    if not files:
+        return placeholder * 4
+        
+    tags = ""
+    for file in files:
+        # 画像名の中にスペースがあるとURLがおかしくなるのでURLエンコード相当の処理（簡易版）
+        file_url = file.replace(" ", "%20")
+        img_url = f"{base_raw_url}/{folder_name}/{file_url}"
+        tags += f'<div class="swiper-slide"><img src="{img_url}"></div>\n'
+        
+    # Swiperのloop機能が正常に動くように、画像が少ない場合は複製して水増しする
+    if len(files) < 4:
+        multiplier = (4 // len(files)) + 1
+        tags = tags * multiplier
+        
+    return tags
+
+html_content = f"""<!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
 <style>
-    /* iframeの中の背景も黒に合わせる */
-    body {
+    body {{
         background-color: #1a1a1a;
         margin: 0;
         padding: 20px 10px;
         display: flex;
         justify-content: center;
         font-family: 'Times New Roman', YuMincho, 'Yu Mincho', serif;
-    }
-    .price-card {
+    }}
+    .price-card {{
         background: linear-gradient(145deg, #111111, #1e1e1e);
         border: 2px solid #b8860b;
         border-radius: 8px;
@@ -39,8 +75,8 @@ html_content = """<!DOCTYPE html>
         width: 100%;
         max-width: 400px;
         box-sizing: border-box;
-    }
-    .price-title {
+    }}
+    .price-title {{
         color: #d4af37;
         font-size: 24px;
         text-align: center;
@@ -48,81 +84,78 @@ html_content = """<!DOCTYPE html>
         border-bottom: 1px solid #d4af37;
         padding-bottom: 8px;
         margin-bottom: 8px;
-    }
-    .price-subtitle {
+    }}
+    .price-subtitle {{
         color: #a9a9a9;
         font-size: 11px;
         text-align: center;
         letter-spacing: 0.2em;
         margin-bottom: 28px;
-    }
-    .menu-item {
+    }}
+    .menu-item {{
         border-bottom: 1px solid #333;
         padding-bottom: 16px;
         margin-bottom: 20px;
-    }
-    .menu-header {
+    }}
+    .menu-header {{
         display: flex;
         justify-content: space-between;
         align-items: baseline;
         margin-bottom: 4px;
-    }
-    .menu-name {
+    }}
+    .menu-name {{
         color: #e0e0e0;
         font-size: 15px;
         margin: 0;
         letter-spacing: 0.05em;
-    }
-    .menu-price {
+    }}
+    .menu-price {{
         color: #d4af37;
         font-size: 18px;
-    }
-    .menu-desc {
+    }}
+    .menu-desc {{
         color: #888;
         font-size: 11px;
         margin: 0;
-    }
-    
-    /* Swiper (スライダー) の設定 */
-    .swiper-container {
+    }}
+    .swiper-container {{
         width: 100%;
         margin-top: 12px;
         overflow: hidden;
-    }
-    .swiper-wrapper {
+    }}
+    .swiper-wrapper {{
         transition-timing-function: linear !important;
-    }
-    .swiper-slide {
+    }}
+    .swiper-slide {{
         width: 120px !important;
-    }
-    .swiper-slide img {
+    }}
+    .swiper-slide img {{
         width: 120px;
         height: 120px;
         object-fit: cover;
         border-radius: 6px;
         border: 2px solid #333;
         box-shadow: 0 4px 10px rgba(0,0,0,0.5);
-    }
-    
-    .vip-box {
+    }}
+    .vip-box {{
         margin-top: 28px;
         background-color: rgba(212, 175, 55, 0.05);
         border: 1px solid rgba(212, 175, 55, 0.3);
         padding: 16px;
         text-align: center;
         border-radius: 4px;
-    }
-    .vip-title {
+    }}
+    .vip-title {{
         color: #d4af37;
         font-size: 13px;
         margin-bottom: 8px;
         letter-spacing: 0.1em;
-    }
-    .vip-text {
+    }}
+    .vip-text {{
         color: #aaa;
         font-size: 11px;
         line-height: 1.6;
-    }
+    }}
 </style>
 </head>
 <body>
@@ -139,10 +172,7 @@ html_content = """<!DOCTYPE html>
 <p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+A"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+B"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+C"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Design+D"></div>
+        {get_image_tags('iqos_case')}
     </div>
 </div>
 </div>
@@ -155,10 +185,7 @@ html_content = """<!DOCTYPE html>
 <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+1"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+2"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+3"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Sample+4"></div>
+        {get_image_tags('tabaco_large')}
     </div>
 </div>
 </div>
@@ -171,10 +198,7 @@ html_content = """<!DOCTYPE html>
 <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+1"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+2"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+3"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Mini+4"></div>
+        {get_image_tags('tabaco_small')}
     </div>
 </div>
 </div>
@@ -187,10 +211,7 @@ html_content = """<!DOCTYPE html>
 <p class="menu-desc">※お客様のお持ち込み本体への施工</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+1"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+2"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+3"></div>
-        <div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=Body+4"></div>
+        {get_image_tags('iqos_body')}
     </div>
 </div>
 </div>
@@ -209,29 +230,27 @@ html_content = """<!DOCTYPE html>
 </p>
 </div>
 
-<!-- 外部プログラム（Swiper）を確実に動かす -->
 <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 <script>
-    document.addEventListener("DOMContentLoaded", function() {
+    document.addEventListener("DOMContentLoaded", function() {{
         const swipers = document.querySelectorAll('.swiper-container');
-        swipers.forEach(function(el) {
-            new Swiper(el, {
+        swipers.forEach(function(el) {{
+            new Swiper(el, {{
                 slidesPerView: 'auto',
                 spaceBetween: 10,
                 loop: true,
                 speed: 3000,
-                autoplay: {
+                autoplay: {{
                     delay: 0,
                     disableOnInteraction: false,
-                },
+                }},
                 freeMode: true,
-            });
-        });
-    });
+            }});
+        }});
+    }});
 </script>
 </body>
 </html>
 """
 
-# components.html を使って、安全な iframe 内で完全なWebページとして表示させる
 components.html(html_content, height=1300, scrolling=False)
