@@ -1,5 +1,4 @@
 import streamlit as st
-import textwrap
 
 st.set_page_config(page_title="PRICE LIST - デコレーション料金表", page_icon="💎", layout="centered")
 
@@ -38,8 +37,8 @@ st.markdown("""
     }
     .menu-item {
         border-bottom: 1px solid #333;
-        padding-bottom: 10px;
-        margin-bottom: 16px;
+        padding-bottom: 16px;
+        margin-bottom: 20px;
     }
     .menu-header {
         display: flex;
@@ -64,6 +63,14 @@ st.markdown("""
         font-size: 11px;
         margin: 0;
     }
+    .menu-image {
+        width: 100%;
+        height: auto;
+        border-radius: 4px;
+        margin-top: 12px;
+        border: 1px solid #333;
+        object-fit: cover;
+    }
     .vip-box {
         margin-top: 28px;
         background-color: rgba(212, 175, 55, 0.05);
@@ -86,7 +93,7 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# h2タグをやめてdivタグにすることでStreamlitの強制スタイルを回避する
+# ダミー画像を追加したHTMLコンテンツ
 html_content = """
 <div class="price-card">
 <div class="price-title">PRICE LIST</div>
@@ -97,6 +104,7 @@ html_content = """
 <div class="menu-price">¥14,900<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
+<img src="https://via.placeholder.com/400x200/111111/d4af37?text=Sample+Image" class="menu-image" alt="Sample 1">
 </div>
 <div class="menu-item">
 <div class="menu-header">
@@ -104,6 +112,7 @@ html_content = """
 <div class="menu-price">¥17,300<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
+<img src="https://via.placeholder.com/400x200/111111/d4af37?text=Sample+Image" class="menu-image" alt="Sample 2">
 </div>
 <div class="menu-item">
 <div class="menu-header">
@@ -111,6 +120,7 @@ html_content = """
 <div class="menu-price">¥15,000<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
+<img src="https://via.placeholder.com/400x200/111111/d4af37?text=Sample+Image" class="menu-image" alt="Sample 3">
 </div>
 <div class="menu-item">
 <div class="menu-header">
@@ -118,6 +128,7 @@ html_content = """
 <div class="menu-price">¥14,200<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 <p class="menu-desc">※お客様のお持ち込み本体への施工</p>
+<img src="https://via.placeholder.com/400x200/111111/d4af37?text=Sample+Image" class="menu-image" alt="Sample 4">
 </div>
 <div class="vip-box">
 <div class="vip-title">VIP SERVICE</div>
