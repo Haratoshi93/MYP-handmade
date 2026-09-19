@@ -1,6 +1,5 @@
 import os
 
-# 画像を読み込むベースURL
 base_raw_url = "https://raw.githubusercontent.com/Haratoshi93/MYP-handmade/main/images"
 
 def get_image_tags(folder_name):
@@ -28,7 +27,6 @@ def get_image_tags(folder_name):
         
     return tags
 
-# 完全に静的なWebサイトとしてHTMLを生成する
 html_content = f"""<!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -70,7 +68,19 @@ html_content = f"""<!DOCTYPE html>
         font-size: 11px;
         text-align: center;
         letter-spacing: 0.2em;
-        margin-bottom: 28px;
+        margin-bottom: 12px;
+    }}
+    .campaign-banner {{
+        background-color: rgba(212, 175, 55, 0.15);
+        border: 1px solid #d4af37;
+        color: #d4af37;
+        text-align: center;
+        padding: 8px;
+        font-size: 11px;
+        letter-spacing: 0.1em;
+        margin-bottom: 24px;
+        border-radius: 4px;
+        font-weight: bold;
     }}
     .menu-item {{
         border-bottom: 1px solid #333;
@@ -80,7 +90,7 @@ html_content = f"""<!DOCTYPE html>
     .menu-header {{
         display: flex;
         justify-content: space-between;
-        align-items: baseline;
+        align-items: flex-end;
         margin-bottom: 4px;
     }}
     .menu-name {{
@@ -88,10 +98,32 @@ html_content = f"""<!DOCTYPE html>
         font-size: 15px;
         margin: 0;
         letter-spacing: 0.05em;
+        padding-bottom: 2px;
     }}
     .menu-price {{
+        text-align: right;
+    }}
+    .original-price {{
+        font-size: 10px;
+        color: #888;
+        text-decoration: line-through;
+        margin-bottom: 2px;
+        letter-spacing: 0.05em;
+    }}
+    .current-price {{
         color: #d4af37;
         font-size: 18px;
+    }}
+    .discount-badge {{
+        font-size: 9px;
+        color: #111;
+        background-color: #d4af37;
+        padding: 2px 4px;
+        border-radius: 2px;
+        margin-right: 4px;
+        vertical-align: text-top;
+        font-weight: bold;
+        letter-spacing: 0;
     }}
     .menu-desc {{
         color: #888;
@@ -144,10 +176,18 @@ html_content = f"""<!DOCTYPE html>
 <div class="price-title">PRICE LIST</div>
 <div class="price-subtitle">BESPOKE RHINESTONE DECORATION</div>
 
+<div class="campaign-banner">
+    ＼ 期間限定モニターキャンペーン ／<br>
+    全メニュー 50%OFF にてご案内中
+</div>
+
 <div class="menu-item">
 <div class="menu-header">
 <div class="menu-name">アイコスケース デコ</div>
-<div class="menu-price">¥14,900<span style="font-size:10px; color:#888;">〜</span></div>
+<div class="menu-price">
+    <div class="original-price">通常 ¥29,800</div>
+    <div class="current-price"><span class="discount-badge">50%OFF</span>¥14,900<span style="font-size:10px; color:#888;">〜</span></div>
+</div>
 </div>
 <p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
 <div class="swiper-container">
@@ -160,7 +200,10 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-item">
 <div class="menu-header">
 <div class="menu-name">たばこケース デコ (大)</div>
-<div class="menu-price">¥17,300<span style="font-size:10px; color:#888;">〜</span></div>
+<div class="menu-price">
+    <div class="original-price">通常 ¥34,600</div>
+    <div class="current-price"><span class="discount-badge">50%OFF</span>¥17,300<span style="font-size:10px; color:#888;">〜</span></div>
+</div>
 </div>
 <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
 <div class="swiper-container">
@@ -173,7 +216,10 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-item">
 <div class="menu-header">
 <div class="menu-name">たばこケース デコ (小)</div>
-<div class="menu-price">¥15,000<span style="font-size:10px; color:#888;">〜</span></div>
+<div class="menu-price">
+    <div class="original-price">通常 ¥30,000</div>
+    <div class="current-price"><span class="discount-badge">50%OFF</span>¥15,000<span style="font-size:10px; color:#888;">〜</span></div>
+</div>
 </div>
 <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
 <div class="swiper-container">
@@ -186,7 +232,10 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-item">
 <div class="menu-header">
 <div class="menu-name">アイコス本体 デコ</div>
-<div class="menu-price">¥14,200<span style="font-size:10px; color:#888;">〜</span></div>
+<div class="menu-price">
+    <div class="original-price">通常 ¥28,400</div>
+    <div class="current-price"><span class="discount-badge">50%OFF</span>¥14,200<span style="font-size:10px; color:#888;">〜</span></div>
+</div>
 </div>
 <p class="menu-desc">※お客様のお持ち込み本体への施工</p>
 <div class="swiper-container">
@@ -233,7 +282,6 @@ html_content = f"""<!DOCTYPE html>
 </html>
 """
 
-# index.htmlとして書き出す
 with open(os.path.join(os.path.dirname(__file__), "index.html"), "w", encoding="utf-8") as f:
     f.write(html_content)
 
