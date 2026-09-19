@@ -185,8 +185,8 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-header">
 <div class="menu-name">アイコスケース デコ</div>
 <div class="menu-price">
-    <div class="original-price">通常 ¥29,800</div>
-    <div class="current-price"><span class="discount-badge">50%OFF</span>¥14,900<span style="font-size:10px; color:#888;">〜</span></div>
+    <div class="original-price">通常 ¥14,900</div>
+    <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,450<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
 <p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
@@ -201,8 +201,8 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-header">
 <div class="menu-name">たばこケース デコ (大)</div>
 <div class="menu-price">
-    <div class="original-price">通常 ¥34,600</div>
-    <div class="current-price"><span class="discount-badge">50%OFF</span>¥17,300<span style="font-size:10px; color:#888;">〜</span></div>
+    <div class="original-price">通常 ¥17,300</div>
+    <div class="current-price"><span class="discount-badge">50%OFF</span>¥8,650<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
 <p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
@@ -217,8 +217,8 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-header">
 <div class="menu-name">たばこケース デコ (小)</div>
 <div class="menu-price">
-    <div class="original-price">通常 ¥30,000</div>
-    <div class="current-price"><span class="discount-badge">50%OFF</span>¥15,000<span style="font-size:10px; color:#888;">〜</span></div>
+    <div class="original-price">通常 ¥15,000</div>
+    <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,500<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
 <p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
@@ -233,8 +233,8 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-header">
 <div class="menu-name">アイコス本体 デコ</div>
 <div class="menu-price">
-    <div class="original-price">通常 ¥28,400</div>
-    <div class="current-price"><span class="discount-badge">50%OFF</span>¥14,200<span style="font-size:10px; color:#888;">〜</span></div>
+    <div class="original-price">通常 ¥14,200</div>
+    <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,100<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
 <p class="menu-desc">※お客様のお持ち込み本体への施工</p>
