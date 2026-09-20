@@ -249,7 +249,7 @@ html_content = f"""<!DOCTYPE html>
 <div class="vip-title">VIP SERVICE</div>
 <div class="vip-text">
 耐久性にはこだわって制作しておりますが、<br>
-ご使用中の摩擦等によりどうしてもストーンが<br>
+ご使用中の衝撃等によりどうしてもストーンが<br>
 取れてしまう場合がございます。<br>
 <br>
 安心して長くご愛用いただけるよう、<br>
