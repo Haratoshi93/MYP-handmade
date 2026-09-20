@@ -160,13 +160,13 @@ html_content = f"""<!DOCTYPE html>
     .vip-title {{
         color: #d4af37;
         font-size: 13px;
-        margin-bottom: 8px;
+        margin-bottom: 12px;
         letter-spacing: 0.1em;
     }}
     .vip-text {{
         color: #aaa;
         font-size: 11px;
-        line-height: 1.6;
+        line-height: 1.8;
     }}
 </style>
 </head>
@@ -248,8 +248,11 @@ html_content = f"""<!DOCTYPE html>
 <div class="vip-box">
 <div class="vip-title">VIP SERVICE</div>
 <div class="vip-text">
-高級ジュエリーボックスにてお渡しいたします。<br>
-万が一ストーンが取れてしまった場合の<br>
+耐久性にはこだわって制作しておりますが、<br>
+ご使用中の摩擦等によりどうしてもストーンが<br>
+取れてしまう場合がございます。<br>
+<br>
+安心して長くご愛用いただけるよう、<br>
 「1回無料お直し保証」をお付けしております。
 </div>
 </div>
