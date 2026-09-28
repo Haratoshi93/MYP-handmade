@@ -249,7 +249,8 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-header">
 <div class="menu-name">特注フルオーダー デコ</div>
 <div class="menu-price">
-    <div class="current-price" style="font-size: 16px;">要相談 <span style="font-size:10px; color:#888;">(ASK)</span></div>
+    <div class="original-price" style="text-decoration: none;">ご予算・デザインに応じて</div>
+    <div class="current-price" style="letter-spacing: 0.05em;">ASK <span style="font-size:10px; color:#888;">(要相談)</span></div>
 </div>
 </div>
 <p class="menu-desc">シャンパンボトル等、お好きなアイテムへの施工</p>
