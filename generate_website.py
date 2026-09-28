@@ -245,6 +245,21 @@ html_content = f"""<!DOCTYPE html>
 </div>
 </div>
 
+<div class="menu-item">
+<div class="menu-header">
+<div class="menu-name">特注フルオーダー デコ</div>
+<div class="menu-price">
+    <div class="current-price" style="font-size: 16px;">要相談 <span style="font-size:10px; color:#888;">(ASK)</span></div>
+</div>
+</div>
+<p class="menu-desc">シャンパンボトル等、お好きなアイテムへの施工</p>
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+        {get_image_tags('custom_order')}
+    </div>
+</div>
+</div>
+
 <div class="vip-box">
 <div class="vip-title">VIP SERVICE</div>
 <div class="vip-text">
