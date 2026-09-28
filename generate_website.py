@@ -168,6 +168,34 @@ html_content = f"""<!DOCTYPE html>
         font-size: 11px;
         line-height: 1.8;
     }}
+    .contact-section {{
+        margin-top: 32px;
+        text-align: center;
+    }}
+    .contact-button {{
+        display: inline-block;
+        background: linear-gradient(145deg, #d4af37, #b8860b);
+        color: #111;
+        text-decoration: none;
+        padding: 16px 24px;
+        border-radius: 30px;
+        font-size: 15px;
+        font-weight: bold;
+        box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);
+        transition: all 0.3s ease;
+        width: 80%;
+        max-width: 300px;
+        letter-spacing: 0.1em;
+    }}
+    .contact-button:active {{
+        transform: scale(0.95);
+    }}
+    .contact-sub {{
+        font-size: 10px;
+        font-weight: normal;
+        opacity: 0.8;
+        letter-spacing: 0.05em;
+    }}
 </style>
 </head>
 <body>
@@ -274,7 +302,14 @@ html_content = f"""<!DOCTYPE html>
 </div>
 </div>
 
-<p style="color: #666; font-size: 9px; text-align: center; margin-top: 24px;">
+<div class="contact-section">
+    <a href="https://www.instagram.com/mypdecoration/" target="_blank" class="contact-button">
+        ご依頼・ご相談はこちら<br>
+        <span class="contact-sub">Instagram (@mypdecoration)</span>
+    </a>
+</div>
+
+<p style="color: #666; font-size: 9px; text-align: center; margin-top: 32px;">
 ※デザインの細かさにより価格が変動する場合がございます。
 </p>
 </div>
