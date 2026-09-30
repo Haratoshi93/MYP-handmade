@@ -265,7 +265,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price" style="letter-spacing: 0.05em;">ASK <span style="font-size:10px; color:#888;">(要相談)</span></div>
 </div>
 </div>
-<p class="menu-desc">シャンパンボトル等お好きなアイテムへ施工</p>
+<p class="menu-desc">お好きなアイテムへ施工</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('custom_order')}
