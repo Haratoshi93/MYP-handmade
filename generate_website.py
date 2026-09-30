@@ -217,7 +217,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,500<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
-<p class="menu-desc">ケース代・ストーン代込み / 全面フルデコ</p>
+<p class="menu-desc">ケース代・ストーン代込み / ご希望のモチーフやイメージに合わせた全面フルデコ</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('iqos_case')}
@@ -233,7 +233,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥8,700<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
-<p class="menu-desc">全面デコレーション / オーダーメイドデザイン</p>
+<p class="menu-desc">全面デコレーション / お好きな配色やこだわりのデザインを形にします</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('tabaco_large')}
@@ -249,7 +249,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,500<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
-<p class="menu-desc">ワンポイントデザイン / イニシャル等</p>
+<p class="menu-desc">ワンポイント装飾 / イニシャルやお好きなモチーフを上品に配置</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('tabaco_small')}
@@ -265,7 +265,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,100<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
-<p class="menu-desc">※お客様のお持ち込み本体への施工</p>
+<p class="menu-desc">お客様のお持ち込み本体への施工 / 世界に一つだけのオリジナルデザイン</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('iqos_body')}
@@ -309,8 +309,9 @@ html_content = f"""<!DOCTYPE html>
     </a>
 </div>
 
-<p style="color: #666; font-size: 9px; text-align: center; margin-top: 32px;">
-※デザインの細かさにより価格が変動する場合がございます。
+<p style="color: #666; font-size: 9px; text-align: center; margin-top: 32px; line-height: 1.5;">
+※デザインの細かさや使用するストーンの量により、価格が変動する場合がございます。<br>
+※ご希望のデザインやモチーフによっては、制作をお受けできない場合がございます。まずは一度ご相談ください。
 </p>
 </div>
 
