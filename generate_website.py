@@ -217,7 +217,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,500<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
-<p class="menu-desc">ケース・ストーン代込 / 完全オーダーメイド（全面装飾）</p>
+<p class="menu-desc">ケース・ストーン代込み / 全面フルデコ装飾</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('iqos_case')}
@@ -233,7 +233,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥8,700<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
-<p class="menu-desc">全面デコレーション / 完全オーダーメイド（全面装飾）</p>
+<p class="menu-desc">全面フルデコ装飾</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('tabaco_large')}
@@ -249,7 +249,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,500<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
-<p class="menu-desc">ワンポイント装飾 / 完全オーダーメイド（イニシャル等）</p>
+<p class="menu-desc">イニシャル等のワンポイント装飾</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('tabaco_small')}
@@ -265,7 +265,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,100<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
-<p class="menu-desc">お持ち込み本体への施工 / 完全オーダーメイド（全面装飾）</p>
+<p class="menu-desc">お持ち込みの本体へ直接施工</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('iqos_body')}
@@ -281,7 +281,7 @@ html_content = f"""<!DOCTYPE html>
     <div class="current-price" style="letter-spacing: 0.05em;">ASK <span style="font-size:10px; color:#888;">(要相談)</span></div>
 </div>
 </div>
-<p class="menu-desc">お持ち込みアイテムへの施工 / 完全オーダーメイド</p>
+<p class="menu-desc">シャンパンボトル等お好きなアイテムへ施工</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('custom_order')}
