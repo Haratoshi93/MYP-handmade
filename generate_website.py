@@ -220,8 +220,7 @@ html_content = f"""<!DOCTYPE html>
 <p class="menu-desc">ケース・ストーン代込み / 全面フルデコ</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        {get_image_tags('iqos_case')}
-        {get_image_tags('tabaco_large')}
+        {get_image_tags('iqos_case') + get_image_tags('tabaco_large')}
     </div>
 </div>
 </div>
