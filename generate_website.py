@@ -211,7 +211,7 @@ html_content = f"""<!DOCTYPE html>
 
 <div class="menu-item">
 <div class="menu-header">
-<div class="menu-name">アイコスケース デコ</div>
+<div class="menu-name">アイコス / たばこケース デコ</div>
 <div class="menu-price">
     <div class="original-price">通常 ¥14,000</div>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,000<span style="font-size:10px; color:#888;">〜</span></div>
@@ -221,21 +221,6 @@ html_content = f"""<!DOCTYPE html>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('iqos_case')}
-    </div>
-</div>
-</div>
-
-<div class="menu-item">
-<div class="menu-header">
-<div class="menu-name">たばこケース デコ</div>
-<div class="menu-price">
-    <div class="original-price">通常 ¥14,000</div>
-    <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,000<span style="font-size:10px; color:#888;">〜</span></div>
-</div>
-</div>
-<p class="menu-desc">ケース・ストーン代込み / 全面フルデコ</p>
-<div class="swiper-container">
-    <div class="swiper-wrapper">
         {get_image_tags('tabaco_large')}
     </div>
 </div>
