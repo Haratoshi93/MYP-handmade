@@ -243,13 +243,13 @@ html_content = f"""<!DOCTYPE html>
 
 <div class="menu-item">
 <div class="menu-header">
-<div class="menu-name">アイコス本体 デコ</div>
+<div class="menu-name">お持ち込み ワンポイントデコ</div>
 <div class="menu-price">
     <div class="original-price">通常 ¥14,200</div>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,100<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
-<p class="menu-desc">お持ち込みの本体へ直接施工</p>
+<p class="menu-desc">お好きなアイテムへワンポイント施工</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('iqos_body')}
