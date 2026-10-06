@@ -213,8 +213,8 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-header">
 <div class="menu-name">アイコスケース デコ</div>
 <div class="menu-price">
-    <div class="original-price">通常 ¥11,500</div>
-    <div class="current-price"><span class="discount-badge">50%OFF</span>¥5,800<span style="font-size:10px; color:#888;">〜</span></div>
+    <div class="original-price">通常 ¥14,000</div>
+    <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,000<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
 <p class="menu-desc">ケース・ストーン代込み / 全面フルデコ</p>
@@ -229,7 +229,7 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-header">
 <div class="menu-name">たばこケース デコ</div>
 <div class="menu-price">
-    <div class="original-price">通常 ¥13,900</div>
+    <div class="original-price">通常 ¥14,000</div>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,000<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
