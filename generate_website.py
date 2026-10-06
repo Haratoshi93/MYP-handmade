@@ -2,27 +2,30 @@ import os
 
 base_raw_url = "https://raw.githubusercontent.com/Haratoshi93/MYP-handmade/main/images"
 
-def get_image_tags(folder_name):
-    folder_path = os.path.join(os.path.dirname(__file__), "images", folder_name)
+def get_image_tags(*folder_names):
+    valid_exts = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
+    all_img_urls = []
+    
+    for folder_name in folder_names:
+        folder_path = os.path.join(os.path.dirname(__file__), "images", folder_name)
+        if os.path.exists(folder_path):
+            files = [f for f in os.listdir(folder_path) if os.path.splitext(f)[1].lower() in valid_exts]
+            for file in files:
+                file_url = file.replace(" ", "%20")
+                img_url = f"{base_raw_url}/{folder_name}/{file_url}"
+                all_img_urls.append(img_url)
+                
     placeholder = f'<div class="swiper-slide"><img src="https://via.placeholder.com/200x200/111111/d4af37?text=No+Image"></div>'
     
-    if not os.path.exists(folder_path):
-        return placeholder * 4
-        
-    valid_exts = {".jpg", ".jpeg", ".png", ".gif", ".webp"}
-    files = [f for f in os.listdir(folder_path) if os.path.splitext(f)[1].lower() in valid_exts]
-    
-    if not files:
+    if not all_img_urls:
         return placeholder * 4
         
     tags = ""
-    for file in files:
-        file_url = file.replace(" ", "%20")
-        img_url = f"{base_raw_url}/{folder_name}/{file_url}"
+    for img_url in all_img_urls:
         tags += f'<div class="swiper-slide"><img src="{img_url}"></div>\n'
         
-    if len(files) < 4:
-        multiplier = (4 // len(files)) + 1
+    if len(all_img_urls) < 4:
+        multiplier = (4 // len(all_img_urls)) + 1
         tags = tags * multiplier
         
     return tags
@@ -220,7 +223,7 @@ html_content = f"""<!DOCTYPE html>
 <p class="menu-desc">ケース・ストーン代込み / 全面フルデコ</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        {get_image_tags('iqos_case') + get_image_tags('tabaco_large')}
+        {get_image_tags('iqos_case', 'tabaco_large')}
     </div>
 </div>
 </div>
