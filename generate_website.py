@@ -229,7 +229,7 @@ html_content = f"""<!DOCTYPE html>
 <div class="menu-header">
 <div class="menu-name">お持ち込み ワンポイントデコ</div>
 <div class="menu-price">
-    <div class="original-price">通常 ¥6,900</div>
+    <div class="original-price">通常 ¥7,000</div>
     <div class="current-price"><span class="discount-badge">50%OFF</span>¥3,500<span style="font-size:10px; color:#888;">〜</span></div>
 </div>
 </div>
