@@ -230,32 +230,16 @@ html_content = f"""<!DOCTYPE html>
 
 <div class="menu-item">
 <div class="menu-header">
-<div class="menu-name">お持ち込み ワンポイントデコ</div>
-<div class="menu-price">
-    <div class="original-price">通常 ¥7,000</div>
-    <div class="current-price"><span class="discount-badge">50%OFF</span>¥3,500<span style="font-size:10px; color:#888;">〜</span></div>
-</div>
-</div>
-<p class="menu-desc">お好きなアイテムへワンポイント施工</p>
-<div class="swiper-container">
-    <div class="swiper-wrapper">
-        {get_image_tags('iqos_body')}
-    </div>
-</div>
-</div>
-
-<div class="menu-item">
-<div class="menu-header">
-<div class="menu-name">特注フルオーダー デコ</div>
+<div class="menu-name">お持ち込み / 特注オーダー デコ</div>
 <div class="menu-price">
     <div class="original-price" style="text-decoration: none;">ご予算・デザインに応じて</div>
     <div class="current-price" style="letter-spacing: 0.05em;">ASK <span style="font-size:10px; color:#888;">(要相談)</span></div>
 </div>
 </div>
-<p class="menu-desc">お好きなアイテムへ施工</p>
+<p class="menu-desc">お好きなアイテム・ご希望のデザインへの施工</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
-        {get_image_tags('custom_order')}
+        {get_image_tags('iqos_body', 'custom_order')}
     </div>
 </div>
 </div>
