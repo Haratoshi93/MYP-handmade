@@ -90,21 +90,28 @@ html_content = f"""<!DOCTYPE html>
         padding-bottom: 16px;
         margin-bottom: 20px;
     }}
-    .menu-header {{
-        display: flex;
-        justify-content: space-between;
-        align-items: flex-end;
-        margin-bottom: 4px;
-    }}
     .menu-name {{
         color: #e0e0e0;
         font-size: 15px;
-        margin: 0;
+        margin: 0 0 6px 0;
         letter-spacing: 0.05em;
-        padding-bottom: 2px;
+    }}
+    .menu-row {{
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+    }}
+    .menu-desc {{
+        color: #888;
+        font-size: 10px;
+        margin: 0;
+        letter-spacing: 0.03em;
+        line-height: 1.4;
     }}
     .menu-price {{
         text-align: right;
+        flex-shrink: 0;
+        margin-left: 10px;
     }}
     .original-price {{
         font-size: 10px;
@@ -128,11 +135,7 @@ html_content = f"""<!DOCTYPE html>
         font-weight: bold;
         letter-spacing: 0;
     }}
-    .menu-desc {{
-        color: #888;
-        font-size: 11px;
-        margin: 0;
-    }}
+
     .swiper-container {{
         width: 100%;
         margin-top: 12px;
@@ -213,14 +216,14 @@ html_content = f"""<!DOCTYPE html>
 </div>
 
 <div class="menu-item">
-<div class="menu-header">
 <div class="menu-name">アイコス / たばこケース フルデコ</div>
-<div class="menu-price">
-    <div class="original-price">通常 ¥14,000</div>
-    <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,000<span style="font-size:10px; color:#888;">〜</span></div>
+<div class="menu-row">
+    <p class="menu-desc">ケース・ストーン代込み / 全面フルデコ</p>
+    <div class="menu-price">
+        <div class="original-price">通常 ¥14,000</div>
+        <div class="current-price"><span class="discount-badge">50%OFF</span>¥7,000<span style="font-size:10px; color:#888;">〜</span></div>
+    </div>
 </div>
-</div>
-<p class="menu-desc">ケース・ストーン代込み / 全面フルデコ</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('iqos_case', 'tabaco_large')}
@@ -229,14 +232,14 @@ html_content = f"""<!DOCTYPE html>
 </div>
 
 <div class="menu-item">
-<div class="menu-header">
 <div class="menu-name">お持ち込み / 特注オーダー デコ</div>
-<div class="menu-price">
-    <div class="original-price" style="text-decoration: none;">ご予算・デザインに応じて</div>
-    <div class="current-price" style="letter-spacing: 0.05em;">ASK <span style="font-size:10px; color:#888;">(要相談)</span></div>
+<div class="menu-row">
+    <p class="menu-desc">お好きなアイテム・ご希望のデザインへの施工</p>
+    <div class="menu-price">
+        <div class="original-price" style="text-decoration: none;">ご予算に応じて</div>
+        <div class="current-price" style="letter-spacing: 0.05em;">ASK <span style="font-size:10px; color:#888;">(要相談)</span></div>
+    </div>
 </div>
-</div>
-<p class="menu-desc">お好きなアイテム・ご希望のデザインへの施工</p>
 <div class="swiper-container">
     <div class="swiper-wrapper">
         {get_image_tags('iqos_body', 'custom_order')}
